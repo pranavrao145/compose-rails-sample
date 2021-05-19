@@ -24,6 +24,7 @@ Recommended Instructions for Use:
     * Create .env and then registering it in your docker-compose.yml for BOTH db and web services using env_file.
 
 * If you are using this template to dockerize an existing rails project, there are some issues with yarn and an empty manifest.json. So, for this setup to work, you need to manually run *docker-compose run web bash*, and then run:
+  * npm install --global yarn 
   * yarn
   * rails webpacker:compile
 
