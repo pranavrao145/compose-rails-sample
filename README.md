@@ -27,6 +27,6 @@ Recommended Instructions for Use:
   * yarn
   * rails webpacker:compile
 
-  * Don't forget to verify (again) your database configuration (see above) to make sure your setup is compatible with what is given in this template; fix whatever is necessary to make sure postgres is set up, the credentials are correct, and any environment variables are set.
+Don't forget to verify (again) your database configuration (see above) to make sure your setup is compatible with what is given in this template; fix whatever is necessary to make sure postgres is set up, the credentials are correct, and any environment variables are set.
   
    
