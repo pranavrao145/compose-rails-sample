@@ -1,6 +1,6 @@
 # Compose and Rails Sample
 
-A sample development setup with Docker Compose and Rails, using a postgres database.
+A sample development setup with Docker Compose and Rails, using a postgres database. The instructions below are for a **new** Rails project. If you want to use this template to dockerize an existing project, Extra Notes below.
 
 Recommended Instructions for Use:
 * Clone the repository
