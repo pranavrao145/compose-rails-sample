@@ -15,4 +15,18 @@ Recommended Instructions for Use:
   * docker-compose up
 * Go to localhost:3000 to view your Rails app.
 
-NOTE: it is recommended to take a look at the docker-compose.yml and config/database.yml files so you know your database configuration and can make changes as you see fit. If you want to use a DATABASE_URL, you will simply need to replace the default config in config/database.yml with what is in the production config in the same document, and then add a DATABASE_URL to your environment. To add to your environment, you can use docker-compose.yml directly, or using an .env and then registering it in your docker-compose.yml for BOTH db and web services.
+## Extra Notes 
+
+* It is recommended to take a look at the docker-compose.yml and config/database.yml files so you know your database configuration and can make changes as you see fit. If you want to use a DATABASE_URL, you need to:
+  * Replace the default config in config/database.yml with what is in the production config in the same document. 
+  * Add a DATABASE_URL to your environment. To add to your environment, you can do one of the following:
+    * Use docker-compose.yml ENVIRONMENT directly
+    * Create .env and then registering it in your docker-compose.yml for BOTH db and web services using env_file.
+
+* If you are using this template to dockerize an existing rails project, there are some issues with yarn and an empty manifest.json. So, for this setup to work, you need to manually run *docker-compose run web bash*, and then run:
+  * yarn
+  * rails webpacker:compile
+
+  * Don't forget to verify (again) your database configuration (see above) to make sure your setup is compatible with what is given in this template; fix whatever is necessary to make sure postgres is set up, the credentials are correct, and any environment variables are set.
+  
+   
