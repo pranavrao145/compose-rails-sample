@@ -2,26 +2,24 @@ FROM ruby:3.0.1
 
 RUN apt-get update -qq && apt-get install -y postgresql-client 
 
-RUN mkdir /usr/local/nvm
-ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 14
 
-# Install nvm with node and npm
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh | bash \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+RUN curl https://deb.nodesource.com/setup_$NODE_VERSION.x | bash
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+RUN apt-get update && apt-get install -y nodejs yarn
 
 WORKDIR /app
 
+COPY package.json /app/package.json
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+
 RUN bundle install
+RUN yarn
 COPY . .
+
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
