@@ -9,7 +9,6 @@ Recommended Instructions for Use:
   * docker-compose.yml 
   * entrypoint.sh
   * config/database.yml (optional if you know what you're doing)
-* Add the pg gem to your Gemfile
 * Run 
   * docker-compose build
   * docker-compose up
