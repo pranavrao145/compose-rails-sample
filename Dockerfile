@@ -16,6 +16,7 @@ COPY package.json /app/package.json
 COPY Gemfile /app/Gemfile
 
 RUN bundle install
+RUN bundle update
 RUN yarn
 COPY . .
 
